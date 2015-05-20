@@ -42,9 +42,7 @@ cars = car_strings.map do |car_string|
             a_car_array[4].to_f) 
 end
 
-server.mount_proc "/home" do |request, response|
-  response.body= File.read "home.html"
-end 
+
 
 server.mount_proc "/cars" do |request, response|
   @cars = cars
@@ -52,12 +50,17 @@ server.mount_proc "/cars" do |request, response|
   response.body = template.result
 end
 
-filters = ["compact", "large", "sporty", "luxury", "mazda", "pontiac"]
+@filters = ["compact", "large", "sporty", "luxury", "mazda", "pontiac"]
 
-filters.each do |filter|
+server.mount_proc "/home" do |request, response|
+  template = ERB.new(File.read "home.html.erb")
+  response.body= template.result
+end
+
+@filters.each do |filter|
+ 
   server.mount_proc "/#{filter}" do |request, response|
-    filter += "?"
-    @cars = cars.select{|car| car.send(filter)}
+    @cars = cars.select{|car| car.send("#{filter}" + "?")}
     template = ERB.new(File.read "template.html.erb")
     response.body = template.result
   end

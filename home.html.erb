@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Server >> Simple Syrup, Cheers!</title>
+</head>
+<body>
+  <h1>The headeriest of headers!</h1>
+  <p>The textiest text you ever saw.</p>
+  <table>
+    <tr>
+      <th>Links to Cars!</th>
+    </tr>
+      
+      <tr>
+        <td><a href="/cars">All Cars</a></td>
+      </tr>
+        <% @filters.sort_by{|filter_name| filter_name}.each do |filter_name| %>
+          <tr>
+            <td>
+              <a href=<%= "/#{filter_name}" %>><%= filter_name.capitalize %></a> 
+            </td>
+          </tr>
+        <% end %>
+  </table>
+  </body>
+</html>
