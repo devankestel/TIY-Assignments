@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @restaurant.name %></title>
+  </head>
+  <body>
+    <ul style="list-style: none;">
+      <li><h1><%= @restaurant.name %></h1></li>
+      <li>Median Rating: <%= @restaurant.median_rating %></li>
+      <li>Average Menu Price: $<%= @restaurant.weighted_price %></li>
+      <li><%= @restaurant.address %></li>
+      <li><%= @restaurant.website %></li>
+    </ul>
+  </body>
+</html>
