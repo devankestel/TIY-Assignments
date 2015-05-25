@@ -43,6 +43,11 @@ class Restaurant
     end
   end
   
+  def filename
+    #returns restaurant name where spaces are replaced with underscores and all lowercase
+    name.gsub(" ", "_").downcase
+  end
+
   def self.cheap
     #returns array of restaurants with weighted price < $15 sorted cheapest to most expensive
     data = Restaurant.all.select{|restaurant| restaurant.weighted_price < 15.0}.sort_by{|restaurant| restaurant.weighted_price}
@@ -65,5 +70,6 @@ end
 #puts "#{Restaurant.top_rated}"
 #puts Restaurant.top_rated
 #puts Restaurant.all[0].median_rating
-puts Restaurant.cuisine_filter("American (New)")
-puts Restaurant.top_rated
+#puts Restaurant.cuisine_filter("American (New)")
+#puts Restaurant.top_rated
+puts Restaurant.all[0].filename

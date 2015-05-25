@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Home</title>
+    <title>The Iron Yelp</title>
   </head>
   <body>
-    <p> Text </p>
+    <h1>The Iron Yelp</h1>
+    <h2>Restaurants By Cuisine Type</h2>
+    <ul style="list-style: none;">
+      <% @categories.each do |category| %>
+      <a href= <%= "#{category.gsub(" ","_").downcase}" %>><li><%= category %></li></a>
+      <% end %>
+    </ul>
+    <p> </p>
   </body>
 </html>

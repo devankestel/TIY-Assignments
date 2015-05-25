@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home</title>
+  </head>
+  <body>
+    <ul style="list-style: none;">
+      <% @filtered_restaurants.each do |restaurant| %>
+      <a href= <%= "#{restaurant.filename}" %>><li><%= restaurant %></li></a>
+      <% end %>
+    </ul>
+  </body>
+</html>
