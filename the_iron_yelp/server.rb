@@ -4,6 +4,7 @@ require "./restaurant"
 
 @restaurants = Restaurant.all
 @categories = Restaurant.uniq_cuisines
+@filters = ["top_rated", "cheap", "expensive"]
 
 server = WEBrick::HTTPServer.new(:Port => 8000)
 
@@ -20,6 +21,16 @@ end
     response.body = template.result
   end
 end
+
+@filters.each do |category|
+  server.mount_proc "/#{category.gsub(" ", "_").downcase}" do |request, response|
+    @category = category
+    @filtered_restaurants = Restaurant.send(category)
+    template = ERB.new(File.read "category.html.erb")
+    response.body = template.result
+  end
+end
+
 
 @restaurants.each do |restaurant|
   
