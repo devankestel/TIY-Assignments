@@ -14,11 +14,13 @@
       <li><%= @restaurant.website %></a></li>
       
     </ul>
+    <h2>Hours</h2>
     <table>
       <% @restaurant.hours.each do |day, times| %>
         <tr><td><%= day %>:</td> <td> Open <%= times["Open"] %></td><td> Closed <%= times["Closed"] %></td></tr>
       <% end %>
     </table>
+    </br>
     <a href="/home">Home</a>
   </body>
 </html>

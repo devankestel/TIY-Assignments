@@ -11,6 +11,11 @@
       <a href= <%= "#{category.gsub(" ","_").downcase}" %>><li><%= category %></li></a>
       <% end %>
     </ul>
-    <p> <%= @toprated %> </p>
+    <h2>Restaurants by Rating and Price</h2>
+    <ul style="list-style: none;">
+      <% @filters.each do |category| %>
+        <li><a href= <%= "/#{category}" %> > <%= category.gsub("_", " ").capitalize %> </a></li>
+      <% end %>
+    </ul>
   </body>
 </html>
