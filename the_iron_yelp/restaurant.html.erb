@@ -20,7 +20,22 @@
         <tr><td><%= day %>:</td> <td> Open <%= times["Open"] %></td><td> Closed <%= times["Closed"] %></td></tr>
       <% end %>
     </table>
+    
+    <!-- 
+    Code block to show that I could print out all ratings, if I wanted to. I think it looks silly without corresponding reviews.
+
+    <h2>Ratings</h2>
+    <table>
+    <tr>
+      <% @restaurant.ratings.each do |rating| %>
+        <td><%= "#{rating}" %>, </td>
+      <% end %>
+    </tr>
+    </table> 
+    -->
+
     </br>
-    <a href="/home">Home</a>
+    <a href="/home">Home</a> 
+
   </body>
 </html>
