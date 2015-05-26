@@ -72,9 +72,9 @@ end
 #puts Restaurant.all[0].median_rating
 #puts Restaurant.cuisine_filter("American (New)")
 #puts Restaurant.top_rated
-Restaurant.all[0].hours.each do |day, times|
-  puts day
-  puts times["Open"]
-  puts times["Closed"]
-end
+#Restaurant.all[0].hours.each do |day, times|
+#  puts day
+#  puts times["Open"]
+#  puts times["Closed"]
+#end
 
