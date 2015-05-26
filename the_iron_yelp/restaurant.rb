@@ -37,9 +37,9 @@ class Restaurant
   def median_rating
     #returns float value of median rating for a restaurant instance
     if(ratings.length % 2 == 0)
-      @median_rating = (ratings[ratings.length/2] + ratings[ratings.length/2 - 1])/2.0
+      @median_rating = (ratings[ratings.length/2] + ratings[ratings.length/2 - 1])/2.00
     else
-      @median_rating = ratings[(ratings.length/2).floor]*1.0
+      @median_rating = ratings[(ratings.length/2).floor]*1.00
     end
   end
   

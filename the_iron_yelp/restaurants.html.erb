@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Home</title>
+    <title>All Restaurants</title>
   </head>
   <body>
-    <p> Text </p>
+    <h1>All Restaurants</h1>
+    <ul style="list-style: none;">
+      <% @restaurants.each do |restaurant| %>
+      <a href= <%= "#{restaurant.filename}" %>><li><%= restaurant %></li></a>
+      <% end %>
+    </ul>
+    <a href="/home">Home</a>
   </body>
 </html>

@@ -13,6 +13,11 @@ server.mount_proc "/home" do |request, response|
   response.body = template.result
 end
 
+server.mount_proc "/restaurants" do |request, response|
+  template = ERB.new(File.read "restaurants.html.erb")
+  response.body = template.result
+end
+
 @categories.each do |category|
   server.mount_proc "/#{category.gsub(" ", "_").downcase}" do |request, response|
     @category = category
