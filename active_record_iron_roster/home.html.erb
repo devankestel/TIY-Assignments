@@ -7,7 +7,13 @@
     <h1>The Iron Roster</h1>
     <ul style="list-style-type:none">
       <% @students.each do |student| %>
-        <li><%= student.name %></li>
+        <li>
+          <% if student.github_account %>
+            <a href=<%= "http://#{student.github_account}.github.com"%>><%= student.name %></a>
+          <% else %>
+            <%= student.name %>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </body>
