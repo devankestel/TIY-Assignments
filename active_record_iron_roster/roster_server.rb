@@ -12,8 +12,8 @@ server.mount_proc "/home" do |request, response|
 end
 
 @selectors.each do |page_name, where_query|
-  puts "#{page_name}"
   server.mount_proc "/#{page_name}" do |request, response|
+    @page_name = page_name
     @where_query = where_query
     template = ERB.new(File.read "where.html.erb")
     response.body = template.result
