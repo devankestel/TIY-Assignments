@@ -2,6 +2,12 @@ require "webrick"
 require "./person"
 
 server = WEBrick::HTTPServer.new(:Port => 8000)
+@students = Person.all
+
+server.mount_proc "/home" do |request, response|
+  template = ERB.new(File.read "home.html.erb")
+  response.body = template.result
+end
 
 server.mount_proc "/new_student_form" do |request, response|
   template = ERB.new(File.read "new_student_form.html.erb")
