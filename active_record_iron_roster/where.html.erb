@@ -1,0 +1,14 @@
+<!Doctype HTML>
+<html>
+  <head>
+    <title>Where Page</title>
+  </head>
+  <body>
+    <h1> Where Page </h1>
+    <ul style="list-style-type:none">
+      <% @students.where(@where_query).each do |student| %>
+        <li><%= student.name %></li>
+      <% end %>
+    </ul>
+  </body>
+</html>
