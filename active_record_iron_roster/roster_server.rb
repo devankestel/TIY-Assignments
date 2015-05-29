@@ -4,12 +4,12 @@ require "./person"
 server = WEBrick::HTTPServer.new(:Port => 8000)
 @students = Person.all
 @selectors = {"rails" => {:subject => "ROR"}, "students" => {:student => true}, 
-              "staff" => {:student => false}, "fee" => {:subject => "FEE"}}
+              "staff" => {:student => false}, "fee" => {:subject => "FEE"}, "home" => {}}
 
-server.mount_proc "/home" do |request, response|
-  template = ERB.new(File.read "home.html.erb")
-  response.body = template.result
-end
+# server.mount_proc "/home" do |request, response|
+#   template = ERB.new(File.read "home.html.erb")
+#   response.body = template.result
+# end
 
 @selectors.each do |page_name, where_query|
   server.mount_proc "/#{page_name}" do |request, response|

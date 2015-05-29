@@ -8,11 +8,12 @@
     <ul style="list-style-type:none">
       <% @students.where(@where_query).each do |student| %>
         <li>
-          <% if student.github_account %>
+          <%= student.has_github? %>
+          <!-- <% if student.github_account %>
             <a href=<%= "http://#{student.github_account}.github.com"%>><%= student.name %></a>
           <% else %>
             <%= student.name %>
-          <% end %>
+          <% end %> -->
         </li>
       <% end %>
     </ul>
