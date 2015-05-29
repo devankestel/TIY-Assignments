@@ -50,6 +50,16 @@ class TodoServlet < WEBrick::HTTPServlet::AbstractServlet
     # note that there are two aspects of that pattern that change; you'll need to write code to handle 
     # requests to do several different kinds of things to your todo items
     # remember how to get back to the main page after updating or destroying your todo
+    
+    if request.path =~ /todo\/create/
+      @todo = Todo.create(request.query).update(:completed => false)
+      response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todo"
+    end
+    if request.path =~ /todo\/(\d+)\/destroy/
+      id = $1
+      @todo = Todo.find(id).destroy
+      response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todo"
+    end    
   end
 
 end
