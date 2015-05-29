@@ -1,5 +1,5 @@
 require 'webrick'
-require './todo'
+require './todo.rb'
 
 server = WEBrick::HTTPServer.new(Port: 8000, DocumentRoot: "./public")
 
@@ -40,6 +40,7 @@ class TodoServlet < WEBrick::HTTPServlet::AbstractServlet
     # really any GET request that has "/todo/" in it 
     # you will need to add some code so the template displays properly
     # and lets you edit a single todo
+    @todos = Todo.all
     template = ERB.new(File.read "index.html.erb")
     response.body = template.result(binding) # binding is required here.
   end
