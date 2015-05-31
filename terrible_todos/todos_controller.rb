@@ -9,6 +9,7 @@ selectors.each do |route, query|
   server.mount_proc "/#{route}" do |request, response|
     # populate some instance variables in here
     @todos = Todo.where(query)
+    @todos_count = Todo.all
     template = ERB.new(File.read "index.html.erb")
     response.body = template.result
   end
@@ -16,12 +17,20 @@ end
 
 # there are several URLs that must be handled
 
-server.mount_proc "/create_todo" do |request, response|
-  # handle data coming in from the form
-  response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todos"
-  # the above line saves you from needing to make a separate template to show a new todo by itself
-  # in general, POST requests from forms should be redirected that way
+server.mount_proc "/completed/clear" do |request, response|
+    Todo.where(:complete =>true).destroy_all
+    @todos = Todo.all
+    @todos_count = @todos
+    template = ERB.new(File.read "index.html.erb")
+    response.body = template.result
 end
+
+# server.mount_proc "/create_todo" do |request, response|
+#   # handle data coming in from the form
+#   response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todos"
+#   # the above line saves you from needing to make a separate template to show a new todo by itself
+#   # in general, POST requests from forms should be redirected that way
+# end
 
 server.mount_proc "/shutdown" do |request, response|
   response.body = "Bye"
@@ -46,6 +55,7 @@ class TodoServlet < WEBrick::HTTPServlet::AbstractServlet
     # you will need to add some code so the template displays properly
     # and lets you edit a single todo
     @todos = Todo.all
+    @todos_count = @todos
     template = ERB.new(File.read "index.html.erb")
     response.body = template.result(binding) # binding is required here.
   end
