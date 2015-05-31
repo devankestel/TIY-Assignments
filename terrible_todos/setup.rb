@@ -10,3 +10,5 @@ ActiveRecord::Base.connection.create_table 'todos',
     table.boolean :complete, default: false
     table.boolean :edit, default: false
   end
+
+puts "@Todos #{Todo.all.count}"

@@ -28,7 +28,7 @@
               
               <li>
                 <!-- If this list item is being edited, the div.view can be omitted -->
-                <% if todo.edit? %>
+                <% if !todo.edit? %>
                 <div class="view">
                   <form>
                     <input class="toggle" type="checkbox" checked>
