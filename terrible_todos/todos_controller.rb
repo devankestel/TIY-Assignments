@@ -3,11 +3,15 @@ require './todo'
 
 server = WEBrick::HTTPServer.new(Port: 8000, DocumentRoot: "./public")
 
-server.mount_proc "/todos" do |request, response|
-  # populate some instance variables in here
-  @todos = Todo.all
-  template = ERB.new(File.read "index.html.erb")
-  response.body = template.result
+selectors = {"todos" => {}, "active" => {:complete => false}, "completed" => {:complete => true}, "" => {}} 
+
+selectors.each do |route, query|
+  server.mount_proc "/#{route}" do |request, response|
+    # populate some instance variables in here
+    @todos = Todo.where(query)
+    template = ERB.new(File.read "index.html.erb")
+    response.body = template.result
+  end
 end
 
 # there are several URLs that must be handled
