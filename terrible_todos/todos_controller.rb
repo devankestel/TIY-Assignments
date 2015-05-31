@@ -67,6 +67,13 @@ class TodoServlet < WEBrick::HTTPServlet::AbstractServlet
     # really any GET request that has "/todo/" in it 
     # you will need to add some code so the template displays properly
     # and lets you edit a single todo
+    
+    if request.path =~ /todo\/(\d+)\/edit/
+      id = $1
+      @todo = Todo.find(id).toggle!(:edit)
+      @todos = Todo.all
+      response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todo"
+    end
     @todos = Todo.all
     @todos_count = @todos
     template = ERB.new(File.read "index.html.erb")
@@ -93,6 +100,12 @@ class TodoServlet < WEBrick::HTTPServlet::AbstractServlet
       @todo = Todo.find(id).toggle!(:complete)
       response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todo"
     end
+    if request.path =~ /todo\/(\d+)\/update/
+      id = $1
+      @todo = Todo.find(id)
+      response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todo"
+    end
+    
     
   end
 

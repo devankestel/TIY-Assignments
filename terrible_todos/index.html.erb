@@ -29,20 +29,21 @@
               <li>
                 <!-- If this list item is being edited, the div.view can be omitted -->
                 <% if !todo.edit? %>
-                <div class="view">
-                  <form action=<%= "/todo/#{todo.id}/complete" %> method="POST">
-                    <input class="toggle" type="checkbox" <%= "checked" if todo.complete? %>>
-                  </form>
-                  <a><%= todo.title %></a>
-                  <form action=<%= "/todo/#{todo.id}/destroy" %> method="POST">
-                    <button class="destroy"></button>
-                  </form>
-                </div>
+                  <div class="view">
+                    <form action=<%= "/todo/#{todo.id}/complete" %> method="POST">
+                      <input class="toggle" type="checkbox" <%= "checked" if todo.complete? %>>
+                    </form>
+                    <a href=<%="todo/#{todo.id}/edit"%>> <%= todo.title %> </a>
+                    <form action=<%= "/todo/#{todo.id}/destroy" %> method="POST">
+                      <button class="destroy"></button>
+                    </form>
+                  </div>
                 <% else %>
-                <!-- The following form should appear only if this list item is being edited -->
-                <form>
-                  <input class="edit" value="Taste the Ruby">
-                </form>
+                  <!-- The following form should appear only if this list item is being edited -->
+                  <form action="todo/#{todo.id}/update" method="POST">
+                    <p> In the edit block </p>
+                    <input class="edit" name="title" value= <%= "#{todo.title}" %> autofocus>
+                  </form>
                 <% end %>
               </li>
             </ul>
@@ -71,9 +72,9 @@
       </section>
     <% end %>
     <footer id="info">
-      <p>Double-click to edit a todo</p>
+      <p>Click to edit a todo</p>
       <!-- Change this out with your name and url ↓ -->
-      <p>Created by <a href="http://todomvc.com">you</a></p>
+      <p>Created by <a href="http://github.com/devankestel">Devan</a></p>
       <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
     </footer>
     <!-- Scripts here. Don't remove ↓ -->
