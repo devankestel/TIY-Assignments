@@ -56,6 +56,11 @@ class TodoServlet < WEBrick::HTTPServlet::AbstractServlet
       @todos = Todo.all
       response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todo"
     end
+    if request.path =~ /todo\/(\d+)\/destroy/
+      id = $1
+      @todo = Todo.find(id).destroy
+      response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todo"
+    end
     
   end
 

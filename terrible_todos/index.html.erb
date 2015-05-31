@@ -34,7 +34,7 @@
                     <input class="toggle" type="checkbox" checked>
                   </form>
                   <a><%= todo.title %></a>
-                  <form>
+                  <form action=<%= "/todo/#{todo.id}/destroy" %> method="POST">
                     <button class="destroy"></button>
                   </form>
                 </div>
