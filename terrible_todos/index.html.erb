@@ -43,7 +43,7 @@
                 <% else %>
                   <!-- The following form should appear only if this list item is being edited -->
                   <li class="editing">
-                    <form action="todo/#{todo.id}/update" method="POST">
+                    <form action=<%= "todo/#{todo.id}/update" %> method="POST">
                       <!--<p><strong> <%= todo.title %> </strong></p>-->
                       <input class="edit" name="title" value=<%= todo.title %>>
                     </form>
