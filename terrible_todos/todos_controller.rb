@@ -25,6 +25,19 @@ server.mount_proc "/completed/clear" do |request, response|
     response.body = template.result
 end
 
+server.mount_proc "/all_completed" do |request, response|
+    
+    if Todo.where(complete: false).count == 0
+      Todo.update_all(complete: false)
+    else
+      Todo.update_all(complete: true)
+    end
+    @todos = Todo.all
+    @todos_count = @todos
+    template = ERB.new(File.read "index.html.erb")
+    response.body = template.result
+end
+
 # server.mount_proc "/create_todo" do |request, response|
 #   # handle data coming in from the form
 #   response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todos"
