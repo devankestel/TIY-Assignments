@@ -6,8 +6,8 @@ class Todo < ActiveRecord::Base
                        database: 'todomvc.db'
 
   #returns true if completed is true in database
-  def completed?
-  end
+  #def completed?
+  #end
 
   #returns true if edit link has been clicked
   def editing?
