@@ -105,7 +105,7 @@ class TodoServlet < WEBrick::HTTPServlet::AbstractServlet
       @todo = Todo.find(id)
       @updated_title = request.query["title"]
       puts "#{@updated_title}"
-      @todo.update(title: @updated_title)
+      @todo.update(title: @updated_title, edit: false)
       response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todo"
     end
     
