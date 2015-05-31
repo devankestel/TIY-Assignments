@@ -30,8 +30,8 @@
                 <!-- If this list item is being edited, the div.view can be omitted -->
                 <% if !todo.edit? %>
                 <div class="view">
-                  <form>
-                    <input class="toggle" type="checkbox" checked>
+                  <form action=<%= "/todo/#{todo.id}/complete" %> method="POST">
+                    <input class="toggle" type="checkbox" <%= "checked" if todo.complete? %>>
                   </form>
                   <a><%= todo.title %></a>
                   <form action=<%= "/todo/#{todo.id}/destroy" %> method="POST">
