@@ -34,7 +34,7 @@
                       <form action=<%= "/todo/#{todo.id}/complete" %> method="POST">
                         <input class="toggle" type="checkbox" <%= "checked" if todo.complete? %>>
                       </form>
-                      <a href=<%="todo/#{todo.id}/edit"%>> <%= todo.title %> </a>
+                      <a href=<%="todo/#{todo.id}/edit"%>> <%= "#{todo.title}" %> </a>
                       <form action=<%= "/todo/#{todo.id}/destroy" %> method="POST">
                         <button class="destroy"></button>
                       </form>
@@ -45,7 +45,7 @@
                   <li class="editing">
                     <form action=<%= "todo/#{todo.id}/update" %> method="POST">
                       <!--<p><strong> <%= todo.title %> </strong></p>-->
-                      <input class="edit" name="title" value=<%= todo.title %>>
+                      <input class="edit" name="title" value= <%= "'#{todo.title}'" %>>
                     </form>
                   </li>
                 <% end %>

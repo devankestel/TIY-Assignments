@@ -71,8 +71,7 @@ class TodoServlet < WEBrick::HTTPServlet::AbstractServlet
     if request.path =~ /todo\/(\d+)\/edit/
       id = $1
       @todo = Todo.find(id).toggle!(:edit)
-      @todos = Todo.all
-      response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todo"
+      #response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todo"
     end
     @todos = Todo.all
     @todos_count = @todos
