@@ -15,11 +15,11 @@ end
 
 # there are several URLs that must be handled
 
-server.mount_proc "/completed/clear" do |request, response|
-    Todo.where(:completed =>true).destroy_all
-    @todos = Todo.all
-    template = ERB.new(File.read "index.html.erb")
-    response.body = template.result
+server.mount_proc "/create_todo" do |request, response|
+  # handle data coming in from the form
+  response.set_redirect WEBrick::HTTPStatus::MovedPermanently, "/todos"
+  # the above line saves you from needing to make a separate template to show a new todo by itself
+  # in general, POST requests from forms should be redirected that way
 end
 
 server.mount_proc "/shutdown" do |request, response|
