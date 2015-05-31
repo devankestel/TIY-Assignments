@@ -3,7 +3,7 @@ require './todo'
 
 server = WEBrick::HTTPServer.new(Port: 8000, DocumentRoot: "./public")
 
-selectors = {"todos" => {}, "active" => {:complete => false}, "completed" => {:complete => true}, "" => {}} 
+selectors = {"todos" => {}, "active" => {:complete => false}, "completed" => {:complete => true}} 
 
 selectors.each do |route, query|
   server.mount_proc "/#{route}" do |request, response|
