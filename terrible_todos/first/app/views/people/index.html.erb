@@ -1,0 +1,8 @@
+<h1>People#index</h1>
+<ul>
+  <% @people.each do |person| %>
+    <li>
+      <%= link_to person.name, person_path(id: person.id)%>
+    </li>
+  <% end %>
+</ul>
