@@ -1,25 +1,26 @@
 class TodosController < ApplicationController
   def index
     @todos = Todo.all
-  end
-  def todos
-    @todos = Todo.all
+    @todos_count = Todo.count
+    @todos_render = @todos_count
+    @flag = 'all'
   end
   def create
-    @todo = Todo.create(params[:id])
-    @todos = Todo.all
+    todo = Todo.create(params[:id])
+    redirect_to '/todos'
   end
   def edit
-    @todo = Todo.find(params[:id])
+    todo = Todo.find(params[:id])
+    todo.editing? = true
+    render: index
   end
   def update
-    @todo = Todo.find(params[:id])
-    @todo = Todo.update(title: request.query["title"])
-    @todos = Todo.all
+    Todo.find(params[:id])update(title: request.query["title"])
+    redirect_to '/todos'
   end
   def destroy
-    @todo = Todo.find(params[:id]).destroy
-    @todos = Todo.all
+    Todo.find(params[:id]).destroy
+    redirect_to '/todos'
   end
   def toggle
     @todos = Todo.all
@@ -28,14 +29,22 @@ class TodosController < ApplicationController
     else
       @todos.update_all(complete: true)
     end
+    redirect_to '/todos'
+  end
+  def toggle_one
+    Todo.find(params[:id]).toggle!(:complete)
+    redirect_to '/todos'
   end
   def active
     @todos = Todo.where(complete: false)
+    @todos_render = Tood.count
   end
   def completed
-    @todos = Todo.where(complete: true)  
+    @todos = Todo.where(complete: true)
+    @todos_render = Todo.count  
   end
   def clear_completed
-    @todos = Todo.destroy_all
+    @todos = Todo.where(complete: true).destroy_all
+    @todos_render = Todo.count
   end  
 end
