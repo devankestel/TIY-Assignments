@@ -1,16 +1,16 @@
 <form action=<%="/people/#{@action}"%> method="POST">
   <label for="name">Name: <br/></label>
-  <input type="text" name="name" id="name">
+  <input type="text" name="name" id="name" value= <%= "#{@person.name}" %>>
   <br/>
   <label for="ROR">ROR</label>
-  <input type="radio" name="subject" id="ROR" value="ROR">
+  <input type="radio" name="subject" id="ROR" value="ROR" <%= "checked" if @person.subject=="ROR" %>>
   <label for="FEE">FEE</label>
-  <input type="radio" name="subject" id="FEE" value="FEE">
+  <input type="radio" name="subject" id="FEE" value="FEE" <%= "checked" if @person.subject=="FEE" %>>
   <label for="iOS">iOS</label>
-  <input type="radio" name="subject" id="iOS" value="iOS">
+  <input type="radio" name="subject" id="iOS" value="iOS" <%= "checked" if @person.subject=="iOS" %>>
   <br/>
   <label for="github_account">Github account username: <br/></label>
-  <input type="text" name="github_account" id="github_account">
+  <input type="text" name="github_account" id="github_account" value= <%= "#{@person.github_account}" %>>
   <br/>
   <button><h2><%="#{@action} this person!"%></h2></button>
 </form>
