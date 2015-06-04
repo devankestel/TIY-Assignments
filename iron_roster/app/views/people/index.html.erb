@@ -13,7 +13,7 @@
     <% @people.each do |person| %>   
       <tr>
         <td><%= person.id %></td>
-        <td><%= person.name %></td>
+        <td><%= link_to "#{person.name}", people_show_path(person.id)%></td>
         <td><%= person.subject %></td>
         <td><%= person.github_account %></td>
         <td><%= person.created_at %></td>

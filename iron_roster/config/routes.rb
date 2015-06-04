@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get '/people' => 'people#index'
   get '/people/new' => 'people#new'
-  get '/people/:id' => 'people#show'
+  get '/people/:id' => 'people#show', as: 'people_show'
   get '/people/:id/edit' => 'people#edit', as: 'people_edit'  
 
   post '/people/create' => 'people#create'
