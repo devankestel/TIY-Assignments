@@ -5,17 +5,11 @@
     <link rel="stylesheet" href="/index.css">
   </head>
   <body>
-    <section id="todoapp">
-      <header id="header">
-        <h1>todos</h1>
-        <form action="/todo/create" method="POST">
-          <input id="new-todo" name="title" placeholder="What needs to be done?" autofocus>
-        </form>
-      </header>
+    
       <!-- This section should be hidden by default and shown when there are todos to display -->
-      <% if @todos_count.count != 0 %>
+      <% if @todos.any? %>
         <section id="main">
-          <form action="/all_completed" method="POST">
+          <form action="/todos/toggle" method="POST">
             <input id="toggle-all" type="checkbox">
             <label for="toggle-all">Mark all as complete</label>
           </form>
@@ -26,14 +20,14 @@
               
               
                 <!-- If this list item is being edited, the div.view can be omitted -->
-                <% if !todo.edit? %>
+                <% if !todo.editing %>
                   <li>
                     <div class="view">
-                      <form action=<%= "/todo/#{todo.id}/complete" %> method="POST">
+                      <form action=<%= "/todos/#{todo.id}/complete" %> method="POST">
                         <input class="toggle" type="checkbox" <%= "checked" if todo.complete? %>>
                       </form>
-                      <a href=<%="todo/#{todo.id}/edit"%>> <%= "#{todo.title}" %> </a>
-                      <form action=<%= "/todo/#{todo.id}/destroy" %> method="POST">
+                      <a href=<%="todos/#{todo.id}/edit"%>> <%= "#{todo.title}" %> </a>
+                      <form action=<%= "/todos/#{todo.id}/destroy" %> method="POST">
                         <button class="destroy"></button>
                       </form>
                     </div>
@@ -41,7 +35,7 @@
                 <% else %>
                   <!-- The following form should appear only if this list item is being edited -->
                   <li class="editing">
-                    <form action=<%= "todo/#{todo.id}/update" %> method="POST">
+                    <form action=<%= "/todos/#{todo.id}/update" %> method="POST">
                       <!--<p><strong> <%= todo.title %> </strong></p>-->
                       <input class="edit" name="title" value= <%= "'#{todo.title}'" %>>
                     </form>
@@ -54,31 +48,26 @@
         <!-- This footer should hidden by default and shown when there are todos -->
         <footer id="footer">
           <!-- This should be `0 items left` by default -->
-          <span id="todo-count"><strong><%= @todos.where(complete: false).count %></strong> items left</span>
+          <span id="todo-count"><strong><%= @todos_left %></strong> items left</span>
           <ul id="filters">
             <li>
               <a class="selected" href="/todos">All</a>
             </li>
             <li>
-              <a href="/active">Active</a>
+              <%= link_to "Active", todos_active_path%>
             </li>
             <li>
-              <a href="/completed">Completed</a>
+              <%= link_to "Completed", todos_completed_path%>
             </li>
           </ul>
           <!-- Hidden if no completed items are left ↓ -->
-          <form action="/completed/clear" method="POST">
+          <form action="/todos/completed/clear" method="POST">
             <button id="clear-completed">Clear completed</button>
           </form>
         </footer>
-      </section>
+      
     <% end %>
-    <footer id="info">
-      <p>Click to edit a todo</p>
-      <!-- Change this out with your name and url ↓ -->
-      <p>Created by <a href="http://github.com/devankestel">Devan</a></p>
-      <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
-    </footer>
+    
     <!-- Scripts here. Don't remove ↓ -->
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="/app.js"></script>
+    <script src="/app.js"></script>post 'todos/create' => 'todos#create'
