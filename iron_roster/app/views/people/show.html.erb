@@ -1,0 +1,10 @@
+<ul>
+  <li><%= @person.id %></li>
+  <li><%= @person.name %></li>
+  <li><%= @person.subject %></li>
+  <li><%= @person.github_account %></li>
+  <li><%= @person.created_at %></li>
+  <li><%= @person.updated_at %></li>
+  <li><%= link_to "Edit", people_edit_path(@person.id)%></li>
+  <li><%= link_to "Delete", people_destroy_path(@person.id)%></li>
+</ul>
