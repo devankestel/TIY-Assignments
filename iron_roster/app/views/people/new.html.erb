@@ -1,4 +1,4 @@
-<form action="/people/create" method="POST">
+<form action=<%="/people/#{@action}"%> method="POST">
   <label for="name">Name: <br/></label>
   <input type="text" name="name" id="name">
   <br/>
