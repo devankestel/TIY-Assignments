@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   get '/people' => 'people#index'
+  get '/people/new' => 'people#new'
+  get '/people/:id' => 'people#show'
+
+  post '/people/create' => 'people#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

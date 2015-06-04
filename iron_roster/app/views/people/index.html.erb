@@ -1,1 +1,22 @@
-<p> Got in! </p>
+<table>
+  <th>
+      <td>id</td>
+      <td>name</td>
+      <td>subject</td>
+      <td>github_account</td>
+      <td>created_at</td>
+      <td>updated_at</td>
+  </th>
+  <% if @people.any? %>
+    <% @people.each do |person| %>   
+      <tr>
+        <td><%= person.id %></td>
+        <td><%= person.name %></td>
+        <td><%= person.subject %></td>
+        <td><%= person.github_account %></td>
+        <td><%= person.created_at %></td>
+        <td><%= person.updated_at %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
