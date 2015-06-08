@@ -1,7 +1,10 @@
 <%= form_for @blog, url: {action: "create"} do |f| %>
+  <%= f.label :title, 'Blog Title' %> </br>
   <%= f.text_field :title %> </br>
+  <%= f.label :description, 'Describe Your Blog!' %> </br>
   <%= f.text_area :description %> </br>
   <%= fields_for @author do |a| %>
+    <%= a.label :name, "Author's Name" %> </br>
     <%= a.text_field :name %> </br>
   <% end %>
   <%= f.submit "Create New Blog" %>
