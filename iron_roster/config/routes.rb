@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get '/people' => 'people#index'
   get '/people/new' => 'people#new'
-  get '/people/:id' => 'people#show', as: 'people_show'
-  get '/people/:id/edit' => 'people#edit', as: 'people_edit'  
+  get '/people/:id/edit' => 'people#edit', as: 'people_edit'
+  get '/people/:id' => 'people#show', as: 'people_show'  
 
   post '/people/create' => 'people#create'
   post '/people/:id/update' => 'people#update'
