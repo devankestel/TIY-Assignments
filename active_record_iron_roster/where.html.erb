@@ -1,0 +1,21 @@
+<!Doctype HTML>
+<html>
+  <head>
+    <title><%= "#{@page_name.upcase}" %></title>
+  </head>
+  <body>
+    <h1> <%= "#{@page_name.upcase}" %> </h1>
+    <ul style="list-style-type:none">
+      <% @students.where(@where_query).each do |student| %>
+        <li>
+          <%= student.has_github? %>
+          <!-- <% if student.github_account %>
+            <a href=<%= "http://#{student.github_account}.github.com"%>><%= student.name %></a>
+          <% else %>
+            <%= student.name %>
+          <% end %> -->
+        </li>
+      <% end %>
+    </ul>
+  </body>
+</html>

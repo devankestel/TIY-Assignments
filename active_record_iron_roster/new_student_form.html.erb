@@ -1,0 +1,31 @@
+<!Doctype HTML>
+<html>
+  <head>
+    <title>New Student Form</title>
+    <style>
+      input {margin-top: 10px; margin-bottom: 10px;}
+    </style>
+  </head>
+  <body>
+    <h1> New Student Form</h1>
+    <form action="/create_student" method="post">
+      <label for="name">Name: <br/></label>
+      <input type="text" name="name" id="name">
+      <br/>
+      <label for="ROR">ROR</label>
+      <input type="radio" name="subject" id="ROR" value="ROR">
+      <label for="FEE">FEE</label>
+      <input type="radio" name="subject" id="FEE" value="FEE">
+      <label for="iOS">iOS</label>
+      <input type="radio" name="subject" id="iOS" value="iOS">
+      <br/>
+      <label for="github_account">Github account username: <br/></label>
+      <input type="text" name="github_account" id="github_account">
+      <br/>
+      <label for="student">Are you a student? </label>
+      <input type="checkbox" name="student" id="student">
+      <br/>
+      <button><h2>Add me to the roster!</h2></button>
+    </form>
+  </body>  
+</html>
