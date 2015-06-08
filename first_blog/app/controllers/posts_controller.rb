@@ -8,4 +8,8 @@ class PostsController < ApplicationController
   end
   def show
   end
+  def create
+    @post = Post.create(title: params[:post][:title], description: params[:post][:description], blog_id: params[:blog_id])
+    render :index
+  end
 end
