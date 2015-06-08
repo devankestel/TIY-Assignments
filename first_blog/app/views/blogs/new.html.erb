@@ -1,1 +1,8 @@
-<p>I'm eventually going to turn into a form. </p>
+<%= form_for @blog, url: {action: "create"} do |f| %>
+  <%= f.text_field :title %> </br>
+  <%= f.text_area :description %> </br>
+  <%= fields_for @author do |a| %>
+    <%= a.text_field :name %> </br>
+  <% end %>
+  <%= f.submit "Create New Blog" %>
+<% end %>
