@@ -54,8 +54,14 @@ class Fixnum
       else
         y[2] + y[4] + (self % 100).to_roman
       end
+    when 1000..2015
+      if self % 1000 == 0
+        y[4] * (self / 1000)
+      else
+        y[4] * (self / 1000) + (self % 1000).to_roman
+      end
     else
-
+      
       "do not know"
     end      
   end

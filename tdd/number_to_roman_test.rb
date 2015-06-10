@@ -144,4 +144,39 @@ class NumberToRomanTest < MiniTest::Test
     #skip
     assert_equal "CMXCIX", 999.to_roman 
   end
+  def test_1000_becomes_M
+    #make an assertion about how code coudl work
+    #skip
+    assert_equal "M", 1000.to_roman 
+  end
+  def test_1555_becomes_MDLV
+    #make an assertion about how code coudl work
+    #skip
+    assert_equal "MDLV", 1555.to_roman 
+  end
+  def test_1896_becomes_MDCCCXCVI
+    #make an assertion about how code coudl work
+    #skip
+    assert_equal "MDCCCXCVI", 1896.to_roman 
+  end
+  def test_1999_becomes_MCMXCIX
+    #make an assertion about how code coudl work
+    #skip
+    assert_equal "MCMXCIX", 1999.to_roman 
+  end
+  def test_2003_becomes_MMIII
+    #make an assertion about how code coudl work
+    #skip
+    assert_equal "MMIII", 2003.to_roman 
+  end
+  def test_2015_becomes_MMXV
+    #make an assertion about how code coudl work
+    #skip
+    assert_equal "MMXV", 2015.to_roman 
+  end
+  def test_3000_becomes_do_not_know
+    #make an assertion about how code coudl work
+    #skip
+    assert_equal "do not know", 3000.to_roman 
+  end
 end
