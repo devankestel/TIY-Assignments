@@ -19,4 +19,9 @@ class NumberToRomanTest < MiniTest::Test
     #skip
     assert_equal "X", 10.to_roman 
   end
+  def test_14_becomes_XIV
+    #make an assertion about how code coudl work
+    #skip
+    assert_equal "XIV", 14.to_roman 
+  end
 end
