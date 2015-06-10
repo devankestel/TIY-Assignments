@@ -104,4 +104,24 @@ class NumberToRomanTest < MiniTest::Test
     #skip
     assert_equal "CDXCI", 491.to_roman 
   end
+  def test_500_becomes_D
+    #make an assertion about how code coudl work
+    #skip
+    assert_equal "D", 500.to_roman 
+  end
+  def test_605_becomes_DCV
+    #make an assertion about how code coudl work
+    #skip
+    assert_equal "DCV", 605.to_roman 
+  end
+  def test_725_becomes_DCCXXV
+    #make an assertion about how code coudl work
+    #skip
+    assert_equal "DCCXXV", 725.to_roman 
+  end
+  def test_858_becomes_DCCCLVIII
+    #make an assertion about how code coudl work
+    #skip
+    assert_equal "DCCCLVIII", 858.to_roman 
+  end
 end

@@ -31,16 +31,22 @@ class Fixnum
         y[0] + y[2] + (self % 10).to_roman
       end
     when 100..399
-      if self % 10 == 0
+      if self % 100 == 0
         y[2] * (self / 100)
       else
         y[2] * (self / 100) + (self % 100).to_roman
       end
     when 400..499
-      if self % 10 == 0
+      if self % 100 == 0
         y[2] + y[3]
       else
         y[2] + y[3] + (self % 100).to_roman 
+      end
+    when 500..899
+      if self % 500 == 0
+        y[3]
+      else
+        y[3] + (self % 500).to_roman
       end
     else
       
