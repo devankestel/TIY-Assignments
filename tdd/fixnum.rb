@@ -12,8 +12,13 @@ class Fixnum
       else  
         y[0] * (self / 10) + (self % 10).to_roman
       end
+    when 40..49
+      if self % 10 == 0
+        y[0] + y[1] 
+      else
+        y[0] + y[1] + (self % 10).to_roman
+      end
     else
-      
       "do not know"
     end      
   end
