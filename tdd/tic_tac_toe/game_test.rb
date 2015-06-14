@@ -7,6 +7,7 @@ require './player'
 class TicTacToeTest < MiniTest::Test
   def setup
     @new_board = Board.new
+    @new_player = Player.new("")
   end
   
   #test board
@@ -144,6 +145,8 @@ class TicTacToeTest < MiniTest::Test
     assert_equal false, diag_win_board.win?
   end
 
-  # def test_tie_win?
-  # end
+  #test player methods
+  def test_player_has_mark
+    assert @new_player.mark
+  end
 end
