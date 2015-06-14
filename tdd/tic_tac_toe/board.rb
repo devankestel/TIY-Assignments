@@ -33,6 +33,7 @@ class Board
       col2 << row[1]
       col3 << row[2]
     end
+    return cols
   end
   def diags
     diag1 = [values[0][0], values[1][1], values[2][2]]
@@ -40,10 +41,8 @@ class Board
     diags = [diag1, diag2]
   end
   def win?
-    #row win logic
-    @values[0].all?{|value| value == "X"} || @values[0].all?{|value| value == "O"}
-
-    #col win logic
+    
+    @values[0].all?{|value| value == "X"} || @values[0].all?{|value| value == "O"} || self.cols[1].all?{|value| value == "X"} || self.cols[1].all?{|value| value == "O"}
     
   end
 

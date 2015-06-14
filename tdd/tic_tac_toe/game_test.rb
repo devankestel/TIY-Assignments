@@ -90,6 +90,20 @@ class TicTacToeTest < MiniTest::Test
     col_win_board.modify(2, 1, "X")
     assert_equal true, col_win_board.win?
   end
+  def test_col_O_win?
+    col_win_board = @new_board
+    col_win_board.modify(0, 1, "O")
+    col_win_board.modify(1, 1, "O")
+    col_win_board.modify(2, 1, "O")
+    assert_equal true, col_win_board.win?
+  end
+  def test_col_X_O_does_not_win?
+    col_win_board = @new_board
+    col_win_board.modify(0, 1, "O")
+    col_win_board.modify(1, 1, "X")
+    col_win_board.modify(2, 1, "O")
+    assert_equal false, col_win_board.win?
+  end
 
   # def test_tie_win?
   # end
