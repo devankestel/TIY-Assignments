@@ -7,7 +7,7 @@ require './player'
 class TicTacToeTest < MiniTest::Test
   def setup
     @new_board = Board.new
-    @new_player = Player.new("")
+    @new_player = Player.new
   end
   
   #test board
@@ -146,7 +146,50 @@ class TicTacToeTest < MiniTest::Test
   end
 
   #test player methods
-  def test_player_has_mark
-    assert @new_player.mark
+  def test_player_class_exists
+    assert @new_player
   end
+  def test_player_has_attributes_and_readers
+    
+    assert @new_player.roll.is_a?(Integer)
+    assert_equal false, @new_player.turn
+    assert_equal false, @new_player.winner
+    assert_equal nil, @new_player.mark
+  end
+  def test_player1_higher_roll_gets_X_mark
+    player1 = Player.new
+    player2 = Player.new
+    player1.roll = 6
+    player2.roll = 4
+    Player.set_mark(player1, player2)
+    assert_equal "X", player1.mark
+    assert_equal "O", player2.mark
+  end
+  def test_player2_higher_roll_gets_X_mark
+    player1 = Player.new
+    player2 = Player.new
+    player1.roll = 4
+    player2.roll = 6
+    Player.set_mark(player1, player2)
+    assert_equal "O", player1.mark
+    assert_equal "X", player2.mark
+  end
+  def test_player1_tie_roll_gets_X_mark
+    player1 = Player.new
+    player2 = Player.new
+    player1.roll = 6
+    player2.roll = 6
+    Player.set_mark(player1, player2)
+    assert_equal "X", player1.mark
+    assert_equal "O", player2.mark
+  end
+  def test_switch_turn_toggles_states_of_both_players
+    player1 = Player.new
+    player2 = Player.new
+    player1.turn = true
+    Player.switch_turn(player1, player2)
+    assert_equal false, player1.turn
+    assert_equal true, player2.turn
+  end
+
 end
