@@ -17,6 +17,24 @@ class TicTacToeTest < MiniTest::Test
   def test_new_board_is_empty?
     assert_equal true, @new_board.empty?
   end
+  def test_modified_board_is_full?
+    modified_board = @new_board
+    for i in 0..2
+      for j in 0..2
+        seed = rand(2)
+        if seed == 0
+          mark = "X"
+        else
+          mark = "O"
+        end
+        modified_board.modify(i, j, mark)
+      end #for i
+    end #for j
+    assert_equal true, modified_board.full?
+  end
+  def test_empty_board_is_not_full?
+    assert_equal false, @new_board.full?
+  end
   def test_new_board_has_values
     assert @new_board.values
   end

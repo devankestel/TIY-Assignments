@@ -16,6 +16,9 @@ class Board
   def empty?
     @values.flatten.all?{|value| value == "_"}
   end
+  def full?
+    @values.flatten.all?{|value| value != "_"}
+  end
   def to_s
     display = ""
     @values.each do |row|
