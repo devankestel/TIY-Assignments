@@ -39,8 +39,12 @@ class Board
     diag2 = [values[2][0], values[1][1], values[0][2]]
     diags = [diag1, diag2]
   end
-  def win
-    true
+  def win?
+    #row win logic
+    @values[0].all?{|value| value == "X"} || @values[0].all?{|value| value == "O"}
+
+    #col win logic
+    
   end
 
 end

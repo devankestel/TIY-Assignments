@@ -7,7 +7,6 @@ require './player'
 class TicTacToeTest < MiniTest::Test
   def setup
     @new_board = Board.new
-    @row_win_board = Board.new
   end
   
   #test board
@@ -15,7 +14,7 @@ class TicTacToeTest < MiniTest::Test
   def test_board_class_exists
     assert @new_board
   end
-  def test_new_board_is_empty
+  def test_new_board_is_empty?
     assert_equal true, @new_board.empty?
   end
   def test_new_board_has_values
@@ -54,15 +53,44 @@ class TicTacToeTest < MiniTest::Test
     modified_board.modify(1, 1, "X")
     assert_equal "X", modified_board.values[1][1]
   end
-  def test_modified_board_is_not_empty
+  def test_modified_board_is_not_empty?
     modified_board = @new_board
     modified_board.modify(1, 1, "X")
     assert_equal false, modified_board.empty?
   end
 
+
   #test wins
 
-  def test_row_win
-    assert_equal true, @row_win_board.win
+  def test_row_X_win?
+    row_win_board = @new_board
+    row_win_board.modify(0, 0, "X")
+    row_win_board.modify(0, 1, "X")
+    row_win_board.modify(0, 2, "X")
+    assert_equal true, row_win_board.win?
   end
+  def test_row_X_win?
+    row_win_board = @new_board
+    row_win_board.modify(0, 0, "O")
+    row_win_board.modify(0, 1, "O")
+    row_win_board.modify(0, 2, "O")
+    assert_equal true, row_win_board.win?
+  end
+  def test_row_X_O_does_not_win?
+    row_win_board = @new_board
+    row_win_board.modify(0, 0, "O")
+    row_win_board.modify(0, 1, "X")
+    row_win_board.modify(0, 2, "O")
+    assert_equal false, row_win_board.win?
+  end
+  def test_col_X_win?
+    col_win_board = @new_board
+    col_win_board.modify(0, 1, "X")
+    col_win_board.modify(1, 1, "X")
+    col_win_board.modify(2, 1, "X")
+    assert_equal true, col_win_board.win?
+  end
+
+  # def test_tie_win?
+  # end
 end
