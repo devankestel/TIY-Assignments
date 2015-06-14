@@ -6,13 +6,15 @@ class Player
     @turn = false
     @winner = false
   end
-  def self.set_mark(player1, player2)
+  def self.set_mark_and_turn(player1, player2)
     if(player1.roll >= player2.roll)
       player1.mark = "X"
       player2.mark = "O"
+      player1.turn = true
     else
       player1.mark = "O"
       player2.mark = "X"
+      player2.turn = true
     end  
   end
   def self.switch_turn(player1, player2)

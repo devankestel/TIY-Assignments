@@ -3,6 +3,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './board'
 require './player'
+require './game'
 
 class TicTacToeTest < MiniTest::Test
   def setup
@@ -156,32 +157,38 @@ class TicTacToeTest < MiniTest::Test
     assert_equal false, @new_player.winner
     assert_equal nil, @new_player.mark
   end
-  def test_player1_higher_roll_gets_X_mark
+  def test_player1_higher_roll_gets_X_mark_and_turn
     player1 = Player.new
     player2 = Player.new
     player1.roll = 6
     player2.roll = 4
-    Player.set_mark(player1, player2)
+    Player.set_mark_and_turn(player1, player2)
     assert_equal "X", player1.mark
     assert_equal "O", player2.mark
+    assert_equal true, player1.turn
+    assert_equal false, player2.turn
   end
-  def test_player2_higher_roll_gets_X_mark
+  def test_player2_higher_roll_gets_X_mark_and_turn
     player1 = Player.new
     player2 = Player.new
     player1.roll = 4
     player2.roll = 6
-    Player.set_mark(player1, player2)
+    Player.set_mark_and_turn(player1, player2)
     assert_equal "O", player1.mark
     assert_equal "X", player2.mark
+    assert_equal false, player1.turn
+    assert_equal true, player2.turn
   end
-  def test_player1_tie_roll_gets_X_mark
+  def test_player1_tie_roll_gets_X_mark_and_turn
     player1 = Player.new
     player2 = Player.new
     player1.roll = 6
     player2.roll = 6
-    Player.set_mark(player1, player2)
+    Player.set_mark_and_turn(player1, player2)
     assert_equal "X", player1.mark
     assert_equal "O", player2.mark
+    assert_equal true, player1.turn
+    assert_equal false, player2.turn
   end
   def test_switch_turn_toggles_states_of_both_players
     player1 = Player.new
@@ -191,5 +198,8 @@ class TicTacToeTest < MiniTest::Test
     assert_equal false, player1.turn
     assert_equal true, player2.turn
   end
+
+  #game tests
+
 
 end
