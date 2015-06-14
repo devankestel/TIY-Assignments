@@ -7,7 +7,11 @@ require './player'
 class TicTacToeTest < MiniTest::Test
   def setup
     @new_board = Board.new
+    @row_win_board = Board.new
   end
+  
+  #test board
+
   def test_board_class_exists
     assert @new_board
   end
@@ -39,5 +43,26 @@ class TicTacToeTest < MiniTest::Test
   end
   def test_new_board_has_2_diags
     assert_equal 2, @new_board.diags.size
+  end
+  def test_new_board_can_be_modifed_with_X
+    modified_board = @new_board
+    modified_board.modify(1, 1, "X")
+    assert_equal "X", modified_board.values[1][1]
+  end
+  def test_new_board_can_be_modifed_with_X
+    modified_board = @new_board
+    modified_board.modify(1, 1, "X")
+    assert_equal "X", modified_board.values[1][1]
+  end
+  def test_modified_board_is_not_empty
+    modified_board = @new_board
+    modified_board.modify(1, 1, "X")
+    assert_equal false, modified_board.empty?
+  end
+
+  #test wins
+
+  def test_row_win
+    assert_equal true, @row_win_board.win
   end
 end

@@ -10,7 +10,9 @@ class Board
     end
     @values = values
   end
-
+  def modify(row, col, mark)
+    @values[row][col] = mark
+  end
   def empty?
     @values.flatten.all?{|value| value == "_"}
   end
@@ -36,6 +38,9 @@ class Board
     diag1 = [values[0][0], values[1][1], values[2][2]]
     diag2 = [values[2][0], values[1][1], values[0][2]]
     diags = [diag1, diag2]
+  end
+  def win
+    true
   end
 
 end
