@@ -44,10 +44,13 @@ class Game
     col = col.to_i - 1
     if board.values[row][col] == "_"
       board.values[row][col] = current_player.mark
-      puts name
       Player.switch_turn(@player1, @player2)
       if self.board.win?
-        puts "Winner"
+        puts ""
+        puts ""
+        puts "Winner!"
+        puts name
+        puts ""
         puts "#{board}"
       elsif self.board.full?
         puts "CATS! (tie)"
