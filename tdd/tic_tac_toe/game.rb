@@ -48,6 +48,10 @@ class Game
       Player.switch_turn(@player1, @player2)
       if self.board.win?
         puts "Winner"
+        puts "#{board}"
+      elsif self.board.full?
+        puts "CATS! (tie)"
+        puts "#{board}"
       else
         self.play
       end
