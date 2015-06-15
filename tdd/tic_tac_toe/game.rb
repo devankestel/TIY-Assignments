@@ -37,6 +37,13 @@ class Game
     puts "#{name}, it is your turn."
     puts "#{board}"
     puts "Please choose which row to add your mark: "
+    row = gets.chomp
     puts "Please choose which column to add your mark: "
+    col = gets.chomp
+    row = row.to_i - 1
+    col = col.to_i - 1
+    if board.values[row][col] == "_"
+      board.values[row][col] = current_player.mark
+    end
   end
 end #game

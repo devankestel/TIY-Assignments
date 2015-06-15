@@ -9,6 +9,7 @@ class TicTacToeTest < MiniTest::Test
   def setup
     @new_board = Board.new
     @new_player = Player.new
+    @new_game = Game.new
   end
   
   #test board
@@ -200,6 +201,15 @@ class TicTacToeTest < MiniTest::Test
   end
 
   #game tests
-
-
+  def test_initialize_makes_two_players_and_a_board
+    
+    assert @new_game.player1.is_a?(Player)
+    assert @new_game.player2.is_a?(Player)
+    assert @new_game.board.is_a?(Board)
+  end
+  def test_initialize_gives_players_marks
+    assert_equal "X" || "O", @new_game.player1.mark
+    assert_equal "X" || "O", @new_game.player1.mark
+  end
+  
 end
