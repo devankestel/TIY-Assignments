@@ -44,6 +44,17 @@ class Game
     col = col.to_i - 1
     if board.values[row][col] == "_"
       board.values[row][col] = current_player.mark
+      puts name
+      Player.switch_turn(@player1, @player2)
+      if self.board.win?
+        puts "Winner"
+      else
+        self.play
+      end
+    else
+      puts ""
+      puts "That square already has a mark. Please try again."
+      self.play
     end
   end
 end #game
