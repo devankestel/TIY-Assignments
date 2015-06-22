@@ -5,8 +5,11 @@ require './hand'
 
 class HandTest < MiniTest::Test
   def setup
-    @hand = Hand.new(Deck.new)
-
+    @deck = Deck.new
+    @hand = Hand.new(@deck)
+    @face_hand = Hand.new(Deck.new)
+    @face_hand.cards[0] = Card.new("Diamonds", "Jack")
+    @face_hand.cards[1] = Card.new("Clubs", "King")
   end
 
   def test_deck_class_exists 
@@ -24,4 +27,11 @@ class HandTest < MiniTest::Test
   def test_hand_has_unique_cards
     assert_equal @hand.cards.uniq, @hand.cards
   end
+  def test_hand_has_total
+    assert @hand.total
+  end
+  def test_total_of_two_face_cards_is_20
+    assert_equal 20, @face_hand.total
+  end
+
 end
