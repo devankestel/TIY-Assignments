@@ -14,6 +14,11 @@ class Deck
         @cards << Card.new(suit, name)
       end
     end
+
+    @cards.shuffle!
     
+  end
+  def deal
+    @cards.shift
   end
 end

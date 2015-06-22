@@ -15,6 +15,8 @@ class DeckTest < MiniTest::Test
         @ordered_deck << Card.new(suit, name)
       end
     end
+    @dealt_deck = Deck.new
+    @dealt_card = @dealt_deck.deal
   end
 
   def test_deck_class_exists 
@@ -32,5 +34,13 @@ class DeckTest < MiniTest::Test
   def test_deck_has_52_unique_cards
     assert_equal @deck.cards.uniq, @deck.cards
   end
-  
+  def test_cards_are_shuffled
+    refute_equal @ordered_deck, @deck.cards
+  end
+  def test_dealt_deck_has_51_cards
+    assert_equal 51, @dealt_deck.cards.length
+  end
+  def test_dealt_deck_returns_card
+    assert @dealt_card.is_a?(Card)
+  end
 end
