@@ -3,7 +3,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './card'
 
-class NumberToEnglishTest < MiniTest::Test
+class CardTest < MiniTest::Test
   def setup
     @card = Card.new("Diamonds", 2)
     @ace = Card.new("Spades", "Ace")
