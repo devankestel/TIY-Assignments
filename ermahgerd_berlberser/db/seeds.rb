@@ -11,7 +11,7 @@ Ermahgerd.destroy_all
 
 pokemon_data = []
 pokemon_data[0] = nil
-(1..91).each do |number|
+(1..151).each do |number|
   pokemon_data[number] = HTTParty.get("http://pokeapi.co/api/v1/pokemon/#{number}/")
 end
 
@@ -37,7 +37,8 @@ puts bulbasaur.description
 erma_base_url = "http://ermahgerd.herokuapp.com/ternslert?"
 
 Pokemon.all.each do |pokemon|
-  plus_description = pokemon.description.gsub(" ", "+")
+  percent_description = pokemon.description.gsub("%", " percent")
+  plus_description = percent_description.gsub(" ", "+")
   description_query = "description=" + plus_description
   number_query = "number=" + "pokedex+number:+" + pokemon.number.to_s
   name_query = "name=" + "ohmygod,+a+wild+" + pokemon.name + "!"
