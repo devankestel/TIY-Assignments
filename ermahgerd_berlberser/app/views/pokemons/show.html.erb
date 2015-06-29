@@ -1,4 +1,8 @@
-<%= @pokemon.name %>
-<%= image_tag(@pokemon.sprite) %>
-<%= @pokemon.number %>
-<%= @pokemon.description %>
+<ul>
+<li><%= @pokemon.name %>
+<%= image_tag(@pokemon.sprite) %></li>
+<li><%= @pokemon.number %></li>
+<li><%= @pokemon.description %></li>
+</ul>
+
+<%= link_to "Back to Pokedex", pokemons_path %>
