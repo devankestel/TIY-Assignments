@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150629014021) do
     t.string   "name"
     t.string   "description"
     t.string   "sprite"
-    t.integer  "number"
+    t.string   "number"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

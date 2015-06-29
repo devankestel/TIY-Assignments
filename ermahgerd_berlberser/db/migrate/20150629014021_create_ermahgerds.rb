@@ -4,7 +4,7 @@ class CreateErmahgerds < ActiveRecord::Migration
       t.string :name
       t.string :description
       t.string :sprite
-      t.integer :number
+      t.string :number
 
       t.timestamps null: false
     end

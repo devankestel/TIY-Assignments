@@ -28,3 +28,20 @@ pokemon_data.each do |pokemon|
 end
 
 puts Pokemon.find(1).description
+
+erma_base_url = "http://ermahgerd.herokuapp.com/ternslert?"
+
+Pokemon.all.each do |pokemon|
+  plus_description = pokemon.description.gsub(" ", "+")
+  description_query = "description=" + plus_description
+  number_query = "number=" + "pokedex+number:+" + pokemon.number.to_s
+  name_query = "name=" + "ohmygod,+a+wild+" + pokemon.name + "!"
+  erma_query = erma_base_url + description_query + "&" + number_query + "&" + name_query
+  erma_result = HTTParty.get(erma_query, format: :json)
+  Ermahgerd.create(name: erma_result["name"],
+                   number: erma_result["number"],
+                   description: erma_result["description"],
+                   sprite: pokemon.sprite)
+end
+
+puts Ermahgerd.find(1).name
