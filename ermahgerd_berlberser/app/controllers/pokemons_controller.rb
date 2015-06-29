@@ -3,7 +3,8 @@ class PokemonsController < ApplicationController
     @pokemons = Pokemon.all
   end
   def show
-    @pokemon = Ermahgerd.find(params[:id])
+    pokemon = Pokemon.find(params[:id])
+    @pokemon = Ermahgerd.find_by(sprite: pokemon.sprite)
   end
 
 end

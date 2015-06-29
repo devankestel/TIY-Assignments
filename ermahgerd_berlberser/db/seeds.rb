@@ -6,13 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Pokemon.destroy_all
+Ermahgerd.destroy_all
+
 pokemon_data = []
 pokemon_data[0] = nil
-(155..200).each do |number|
+(1..91).each do |number|
   pokemon_data[number] = HTTParty.get("http://pokeapi.co/api/v1/pokemon/#{number}/")
 end
 
-puts pokemon_data[155]["name"]
+puts pokemon_data[1]["name"]
 
 base_uri = "http://pokeapi.co"
 
@@ -27,7 +30,9 @@ pokemon_data.each do |pokemon|
   end
 end
 
-puts Pokemon.find(1).description
+bulbasaur = Pokemon.find_by(number: 1)
+
+puts bulbasaur.description
 
 erma_base_url = "http://ermahgerd.herokuapp.com/ternslert?"
 
@@ -44,4 +49,4 @@ Pokemon.all.each do |pokemon|
                    sprite: pokemon.sprite)
 end
 
-puts Ermahgerd.find(1).name
+puts Ermahgerd.find_by(sprite: bulbasaur.sprite).name
