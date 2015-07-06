@@ -5,6 +5,6 @@ class TodosController < ApplicationController
   def clear_complete
     @todos = Todo.all
     @todos.where(complete: true).destroy_all
-    redirect_to todos_path
+    #redirect_to todos_path
   end
 end
