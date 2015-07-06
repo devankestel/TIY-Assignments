@@ -34,9 +34,10 @@
           </li>
         </ul>
         <!-- Hidden if no completed items are left ↓ -->
-        <form>
+        <!-- <form>
           <button id="clear-completed">Clear completed</button>
-        </form>
+        </form> -->
+        <%= link_to "Clear Completed", clear_complete_path, id: "clear-completed" %>
       </footer>
     </section>
     <footer id="info">

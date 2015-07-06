@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
 
+#           Prefix Verb   URI Pattern                     Controller#Action
+#          todos GET    /todos(.:format)                todos#index
+#                POST   /todos(.:format)                todos#create
+#       new_todo GET    /todos/new(.:format)            todos#new
+#      edit_todo GET    /todos/:id/edit(.:format)       todos#edit
+#           todo GET    /todos/:id(.:format)            todos#show
+#                PATCH  /todos/:id(.:format)            todos#update
+#                PUT    /todos/:id(.:format)            todos#update
+#                DELETE /todos/:id(.:format)            todos#destroy
+# clear_complete GET    /todos/clear_complete(.:format) todos#clear_complete
+
+  get 'todos/clear_complete' => 'todos#clear_complete', as: :clear_complete
+
   resources :todos
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
