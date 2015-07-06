@@ -9,4 +9,6 @@ class TodosController < ApplicationController
   end
   def active
   end
+  def complete
+  end
 end

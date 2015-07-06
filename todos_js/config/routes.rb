@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get '/todos/clear_complete' => 'todos#clear_complete', as: :clear_complete
   get '/todos/active' => 'todos#active', as: :active
+  get '/todos/complete' => 'todos#complete', as: :complete
 
   resources :todos
 
