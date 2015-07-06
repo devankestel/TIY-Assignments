@@ -7,4 +7,6 @@ class TodosController < ApplicationController
     @todos.where(complete: true).destroy_all
     #redirect_to todos_path
   end
+  def active
+  end
 end

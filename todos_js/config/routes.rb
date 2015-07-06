@@ -11,7 +11,8 @@ Rails.application.routes.draw do
 #                DELETE /todos/:id(.:format)            todos#destroy
 # clear_complete GET    /todos/clear_complete(.:format) todos#clear_complete
 
-  get 'todos/clear_complete' => 'todos#clear_complete', as: :clear_complete
+  get '/todos/clear_complete' => 'todos#clear_complete', as: :clear_complete
+  get '/todos/active' => 'todos#active', as: :active
 
   resources :todos
 
