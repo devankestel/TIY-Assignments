@@ -16,3 +16,7 @@
       <input class="edit" value="Taste the Ruby">
     </form>
 </li>
+
+<!-- Code receipe for a more complex partial -->
+
+<%= render partial: 'form', locals: { submit_msg: "Update Restaurant", restaurant: @restaurant}  %>

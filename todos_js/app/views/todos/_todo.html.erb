@@ -1,46 +1,11 @@
-<% subset = "complete" %>
-<% if subset == "active" %>
-  <a>Active</a>
-  <% unless todo.complete %>
-    <li>
-      <div class="view">
-        <form>
-            <input class="toggle" type="checkbox" checked>
-        </form>
-        <a><%= todo.content %></a>
-        <form>
-            <button class="destroy"></button>
-        </form>
-      </div>
-    </li>
-  <% end %>
-<% elsif  subset == "complete" %>
-  <a>Complete</a>
-  <% if todo.complete %>
-    <li>
-      <div class="view">
-        <form>
-            <input class="toggle" type="checkbox" checked>
-        </form>
-        <a><%= todo.content %></a>
-        <form>
-            <button class="destroy"></button>
-        </form>
-      </div>
-    </li>
-  <% end %>
-<% else %>
-  <a>All</a>
-  <li>
+<li <%= "class=completed" if todo.complete %>>
     <div class="view">
       <form>
-          <input class="toggle" type="checkbox" checked>
+          <input class="toggle" type="checkbox" <%= "checked" if todo.complete %>>
       </form>
       <a><%= todo.content %></a>
       <form>
           <button class="destroy"></button>
       </form>
     </div>
-  </li>
-<% end %>
-
+</li>
