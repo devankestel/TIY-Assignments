@@ -1,11 +1,13 @@
-<li>
-  <div class="view">
-    <form>
-        <input class="toggle" type="checkbox" checked>
-    </form>
-    <a><%= todo.content %></a>
-    <form>
-        <button class="destroy"></button>
-    </form>
-  </div>
-</li>
+<% if todo.complete %>
+  <li>
+    <div class="view">
+      <form>
+          <input class="toggle" type="checkbox" checked>
+      </form>
+      <a><%= todo.content %></a>
+      <form>
+          <button class="destroy"></button>
+      </form>
+    </div>
+  </li>
+<% end %>
